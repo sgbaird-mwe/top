@@ -2,5 +2,5 @@
 	path = sub
 	url = https://github.com/sgbaird-mwe/sub.git
 [submodule "top/sub"]
-	path = top-sgbaird-mwe/sub
+	path = top_sgbaird_mwe/sub
 	url = https://github.com/sgbaird-mwe/sub.git
