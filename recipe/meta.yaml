@@ -29,6 +29,10 @@ build:
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
+  build:
+    # If your project compiles code (such as a C extension) then add the required
+    # compilers as separate entries here. Compilers are named 'c', 'cxx' and 'fortran'.
+    - {{ compiler('c') }}
   host:
     - python
     - pip
@@ -39,7 +43,17 @@ test:
   # Some packages might need a `test/commands` key to check CLI.
   # List all the packages/modules that `run_test.py` imports.
   imports:
-    - top_sgbaird_mwe
+    - package
+  # Run your test commands here
+  commands:
+    - package --help
+    - pytest
+  # declare any test-only requirements here
+  requires:
+    - pytest
+  # copy over any needed test files here
+  source_files:
+    - tests/
 
 # Uncomment and fill in package metadata
 #about:
