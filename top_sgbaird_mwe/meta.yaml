@@ -1,0 +1,42 @@
+{% set name = "top_sgbaird_mwe" %}
+{% set version = "1.0.0" %}
+
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/top_sgbaird_mwe-{{ version }}.tar.gz
+  sha256: 489d5a7bf329f510686264038bb556f93a58efad6e11f58a1f4d9e8ef3e095c7
+
+build:
+  number: 0
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+
+test:
+  imports:
+    - top_sgbaird_mwe
+    - top_sgbaird_mwe.sub
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/top_sgbaird_mwe/
+  summary: Minimal working example for conda-smithy submodule error https://github.com/conda-forge/conda-smithy/issues/1516.
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - sgbaird
